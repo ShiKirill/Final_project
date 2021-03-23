@@ -3,7 +3,10 @@ const burger = () => {
   const hiddenLarge = document.querySelector('.hidden-large');
   const topMenu = document.querySelector('.top-menu');
   const popupMenu = document.querySelector('.popup-menu');
+  const arrow = document.getElementById('totop');
+  const arrowPoint = document.getElementById('clubs').offsetTop;
   const topMenuOffset = topMenu.offsetTop;
+  arrow.style.display = 'none';
 
 
   document.addEventListener('click',event => {
@@ -40,6 +43,14 @@ const burger = () => {
   if (window.innerWidth < 768) {
     window.addEventListener('scroll', scrollFixation);
   }
+  // Arrow
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > arrowPoint) {
+      arrow.style.display = 'block';
+    } else {
+      arrow.style.display = 'none';
+    }
+  })
 
 };
 
