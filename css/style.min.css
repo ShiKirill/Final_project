@@ -1335,13 +1335,12 @@ nav.popup-menu .close-menu-btn img {
   display: flex;
   margin: 0 auto;
   padding-left: 15px;
-  padding-right: 15px
+  padding-right: 15px;
+  position: relative;
 }
 
 .services-slider .slide {
   text-align: center;
-  margin-right: 6px;
-  margin-left: 6px;
   width: 210px
 }
 
@@ -1391,6 +1390,21 @@ nav.popup-menu .close-menu-btn img {
 
 .services-slider .slider-arrow.next {
   right: 2px
+}
+
+.services-slider-wrapper {
+  
+  overflow: hidden;
+} 
+
+.services-slider-main{
+  display: flex;
+  transition: transform 0.5s !important;
+  will-change: transform !important;
+}
+
+.services-slider-main.slide {
+  flex: 0 0 20%;
 }
 
 #gallery {
@@ -2051,7 +2065,6 @@ p.personal-data input[type=checkbox]:checked+label:before {
   font-weight: 500;
   margin-top: 30px
 }
-
 
 @media only screen and (max-width:1199px) {
   .services-slider .slider-arrow.prev {
