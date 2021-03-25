@@ -1406,12 +1406,14 @@ nav.popup-menu .close-menu-btn img {
   padding-right: 75px;
   max-width: 900px;
   margin: 0 auto;
-  text-align: center
+  text-align: center;
+  position: relative
 }
 
 #gallery .gallery-slider .slide {
   margin: 0 auto!important;
-  width: 100%
+  width: 100%;
+  display: none;
 }
 
 #gallery .gallery-slider .slider-arrow {
@@ -2050,6 +2052,7 @@ p.personal-data input[type=checkbox]:checked+label:before {
   margin-top: 30px
 }
 
+
 @media only screen and (max-width:1199px) {
   .services-slider .slider-arrow.prev {
     left: 25px
@@ -2375,4 +2378,8 @@ p.personal-data input[type=checkbox]:checked+label:before {
   .slider-dots {
     bottom: 30px
   }
+}
+
+#gallery .gallery-slider .active {
+  display: block;
 }
