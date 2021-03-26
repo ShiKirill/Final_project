@@ -4,10 +4,15 @@ const burger = () => {
   const topMenu = document.querySelector('.top-menu');
   const popupMenu = document.querySelector('.popup-menu');
   const arrow = document.getElementById('totop');
-  const arrowPoint = document.getElementById('clubs').offsetTop;
+  let arrowPoint;
+  if (document.getElementById('clubs')) {
+    arrowPoint = document.getElementById('clubs').offsetTop;
+  } else {
+    arrowPoint = document.querySelector('.breadcrumbs').offsetTop;
+  }
+  
   const topMenuOffset = topMenu.offsetTop;
   arrow.style.display = 'none';
-
 
   document.addEventListener('click',event => {
     const target = event.target;
