@@ -11,6 +11,9 @@ const header = () => {
 
   document.addEventListener('click', event => {
     const target = event.target;
+    if (target.closest('#footer_form')) {
+      return;
+    }
     if (target.closest('.club-select')) {
       if (clubList.style.display === 'none' || !clubList.style.display) {
         clubList.style.display = 'inline';

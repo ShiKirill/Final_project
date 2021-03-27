@@ -633,7 +633,7 @@ html#schelkovo .advantages .wrapper {
 
 .fixed-gift {
   position: fixed;
-  z-index: 5555;
+  z-index: 1019;
   display: inline;
   top: 15px;
   right: 20px;
@@ -1880,7 +1880,8 @@ footer .footer-bottom .right .socials .social-icon:hover a {
   display: none
 }
 
-.popup .overlay {
+.popup .overlay,
+.overlay-loading {
   background-color: rgba(0, 0, 0, .7);
   position: fixed;
   top: 0;
@@ -2395,4 +2396,36 @@ p.personal-data input[type=checkbox]:checked+label:before {
 
 #gallery .gallery-slider .active {
   display: block;
+}
+
+.sk-three-bounce {
+  width: 8em;
+  margin: auto;
+  text-align: center;
+}
+.sk-three-bounce .sk-child {
+  width: 2em;
+  height: 2em;
+  background-color: #337ab7;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-three-bounce 1.4s ease-in-out 0s infinite both;
+  animation: sk-three-bounce 1.4s ease-in-out 0s infinite both;
+}
+.sk-three-bounce .sk-bounce-1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.sk-three-bounce .sk-bounce-2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@keyframes sk-three-bounce {
+  0%, 80%, 100% {
+  transform: scale(0);
+  }
+  40% {
+  transform: scale(1.0);
+  }
 }
