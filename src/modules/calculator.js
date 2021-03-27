@@ -163,29 +163,31 @@ const calculator = () => {
         body[val[0]] = val[1];
       }
       body.value = document.getElementById('price-total').textContent;
-      fetch('../../server.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(body)
-      }).then((response) => {
+
+
+      const request = new XMLHttpRequest();
+
+      request.addEventListener('readystatechange', () => {
+        document.getElementById('loading').style.display = 'block';
+        if (request.readyState !== 4) {
+          return;
+        }
+        if (request.status === 200) {
+          document.getElementById('loading').style.display = 'none';
+          document.getElementById('thanks').style.display = 'block';
+        } else {
+          document.getElementById('loading').style.display = 'none';
+          document.getElementById('error').style.display = 'block';
+          console.error(request.status);
+        }
         promoInput.value = '';
         calculator.querySelectorAll('p input').forEach(item=>item.value='');
         document.getElementById('card_check').checked = false;
-        if (response.status !== 200) {
-          throw new Error('status network not 200')
-        }
-
-        document.getElementById('thanks').style.display = 'block';
-      })
-      .catch(error => {
-        if(!calculator.querySelector('.send-wrong')){
-        calculator.querySelector('.submit').insertAdjacentHTML('beforebegin', `<p style="color:red" class="send-wrong">Что-то пошло не так...</p>`);
-      }
-      setTimeout(()=>{calculator.querySelector('.send-wrong').parentNode.removeChild(calculator.querySelector('.send-wrong'));},3000);
-        console.error(error);
       });
+
+      request.open('POST', '../../server.php');
+      request.setRequestHeader('Content-Type', 'multipart/form-data');
+      request.send(JSON.stringify(body));
     }
   })
     

@@ -127,9 +127,6 @@ const clubForms = () => {
     }
   });
 
-
-
-
 };
 
 export default clubForms;
