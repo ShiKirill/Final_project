@@ -10,6 +10,9 @@ import gallerySlider from './modules/gallerySlider';
 import calculator from './modules/calculator';
 import clubForms from './modules/clubForms';
 import footerForm from './modules/footerForm';
+import bannerForm from './modules/bannerForm';
+
+
 
 
 header();
@@ -24,3 +27,4 @@ servicesSlider();
 calculator();
 clubForms();
 footerForm();
+bannerForm();
