@@ -11,7 +11,7 @@ import calculator from './modules/calculator';
 import clubForms from './modules/clubForms';
 import footerForm from './modules/footerForm';
 import bannerForm from './modules/bannerForm';
-
+import popupForm from './modules/popupForm';
 
 
 
@@ -28,3 +28,5 @@ calculator();
 clubForms();
 footerForm();
 bannerForm();
+popupForm('form2');
+popupForm('form1');
