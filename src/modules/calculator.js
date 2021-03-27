@@ -1,4 +1,7 @@
 const calculator = () => {
+  if (document.querySelector('html').getAttribute('id')){
+    return;
+  }
   const calculatorForm = document.getElementById('card_order');
   const calculator = document.getElementById('cards');
   const timeInputs = calculator.querySelectorAll('.time input');
@@ -11,6 +14,7 @@ const calculator = () => {
   let agreement = false;
   const nameWrong = `<p style="color:red" class="name-wrong">Некорректный ввод в поле "Ваше имя"</p>`;
   const telWrong = `<p style="color:red" class="tel-wrong">Некорректный ввод в поле "Ваш номер телефона"</p>`;
+  const checkWrong = `<p style="color:red" class="agreement-wrong">Необходимо согласие.</p>`;
 
 
   const getClubPrize = () => {
@@ -30,6 +34,7 @@ const calculator = () => {
   };
 
   const checkPromo = () => {
+    
       if (promoInput.value === 'ТЕЛО2020'){
         discount = 30;
       }  else {
@@ -58,7 +63,7 @@ const calculator = () => {
       page = parser.parseFromString(html, "text/html");
       main();
   })
-  .catch(function(err) {  
+  .catch((err) => {  
       console.error('Failed to fetch page: ', err);  
   });
   };
@@ -102,7 +107,7 @@ const calculator = () => {
     if (target.closest('.name-input')){
       target.value = target.value.replace(/[^а-яё -]/ig, '');
     } else if (target.closest('.tel-input')){
-      target.value = target.value.replace(/[^+0-9]/, '');
+      target.value = target.value.replace(/[^+0-9]/g, '');
     } else {
       if (target.checked) {
         agreement = true;
@@ -116,7 +121,7 @@ const calculator = () => {
   });
   calculator.addEventListener('change', (e) => {
     const target = e.target;
-    if (!(target.closest('.tel-input') || target.closest('.name-input') || target.matches('#card_check'))) {
+    if (!(target.closest('.tel-input') || target.closest('.name-input'))) {
       return;
     }
     if (target.closest('.name-input')){
@@ -146,7 +151,7 @@ const calculator = () => {
     e.preventDefault();
     if (!agreement) {
       if (!calculator.querySelector('.agreement-wrong')){
-        calculator.querySelector('.personal-data').insertAdjacentHTML('beforeend', `<p style="color:red" class="agreement-wrong">Необходимо согласие.</p>`);
+        calculator.querySelector('.personal-data').insertAdjacentHTML('beforeend', checkWrong);
       }
       return;
     } else if (calculator.querySelector('.tel-wrong') || calculator.querySelector('.name-wrong')){

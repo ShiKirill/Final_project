@@ -8,6 +8,7 @@ import mainSlider from './modules/mainSlider';
 import servicesSlider from './modules/servicesSlider';
 import gallerySlider from './modules/gallerySlider';
 import calculator from './modules/calculator';
+import clubForms from './modules/clubForms';
 
 
 header();
@@ -20,3 +21,4 @@ mainSlider();
 gallerySlider();
 servicesSlider();
 calculator();
+clubForms();
