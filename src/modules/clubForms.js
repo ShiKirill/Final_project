@@ -13,10 +13,10 @@ const clubForms = () => {
   const checkWrong = `<p style="color:red" class="agreement-wrong">Необходимо согласие.</p>`;
 
   inputs.forEach(item => {
-    if(item.checked) {
+    if (item.checked) {
       months = parseInt(item.value);
     }
-    labels.forEach(elem=> {
+    labels.forEach(elem => {
       if (elem.getAttribute('for') === item.getAttribute('id')) {
         value = parseInt(elem.querySelector('.cost').textContent);
       }
@@ -107,12 +107,22 @@ const clubForms = () => {
       const request = new XMLHttpRequest();
 
       request.addEventListener('readystatechange', () => {
+        document.getElementById('loading').style.display = 'block';
         if (request.readyState !== 4) {
           return;
         }
         if (request.status === 200) {
+          document.getElementById('loading').style.display = 'none';
           document.getElementById('thanks').style.display = 'block';
+          setTimeout(() => {
+            document.getElementById('thanks').style.display = 'none';
+          }, 3000);
         } else {
+          document.getElementById('loading').style.display = 'none';
+          document.getElementById('error').style.display = 'block';
+          setTimeout(() => {
+            document.getElementById('error').style.display = 'none';
+          }, 3000);
           console.error(request.status);
         }
         form.querySelectorAll('p input').forEach(item => item.value = '');
@@ -123,7 +133,7 @@ const clubForms = () => {
       request.setRequestHeader('Content-Type', 'multipart/form-data');
       request.send(JSON.stringify(body));
 
-      
+
     }
   });
 

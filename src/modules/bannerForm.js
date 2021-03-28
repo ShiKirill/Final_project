@@ -84,9 +84,15 @@ const bannerForm = () => {
       if (request.status === 200) {
         document.getElementById('loading').style.display = 'none';
         document.getElementById('thanks').style.display = 'block';
+        setTimeout(()=>{
+          document.getElementById('thanks').style.display = 'none';
+        }, 3000);
       } else {
         document.getElementById('loading').style.display = 'none';
         document.getElementById('error').style.display = 'block';
+        setTimeout(()=>{
+          document.getElementById('error').style.display = 'none';
+        }, 3000);
         console.error(request.status);
       }
       form.querySelectorAll('input').forEach(item => item.value = '');
