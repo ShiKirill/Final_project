@@ -11,7 +11,7 @@ const header = () => {
 
   document.addEventListener('click', event => {
     const target = event.target;
-    if (target.closest('#footer_form')) {
+    if (target.closest('#footer_form') || ((target.closest('.club-select ul') || target === clubList) && target.tagName.toLowerCase() !== 'a')) {
       return;
     }
     if (target.closest('.club-select')) {
@@ -20,7 +20,12 @@ const header = () => {
       } else {
         clubList.style.display = 'none';
       }
-    } else if (target.classList.contains('open-popup')) {
+    } else {
+      if (clubList.style.display !== 'none') {
+        clubList.style.display = 'none';
+      }
+    }
+    if (target.classList.contains('open-popup')) {
       freeVisitForm.style.display = 'block';
     } else if (target.classList.contains('callback-btn')) {
       callbackForm.style.display = 'block';
@@ -29,11 +34,7 @@ const header = () => {
       giftIcon.style.display = 'none';
     } else if (target.matches('.close_icon, .overlay, .close-btn')) {
       target.closest('.popup').style.display = 'none';
-    } else {
-      if (clubList.style.display !== 'none') {
-        clubList.style.display = 'none';
-      }
-    }
+    } 
   });
 
 }

@@ -76,6 +76,10 @@ const servicesSlider = () => {
     checkResponse();
   };
 
+  window.addEventListener('resize', ()=>{
+    responseInit();
+  });
+
   const init = () => {
     controlSlider();
     responseInit();
